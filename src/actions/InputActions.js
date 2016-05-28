@@ -1,6 +1,6 @@
-export function setName(name){
+export function changeInputValue(value){
     return {
-        type: 'SET_NAME',
-        payload: name
+        type: 'CHANGE_INPUT_VALUE',
+        payload: value
     }
 }

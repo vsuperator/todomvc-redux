@@ -1,10 +1,10 @@
-import {SET_YEAR} from '../constants/Page.js'
+import {ADD_TODO} from '../constants/InputField'
 
-export function setYear(year) {
+export function addTodo(todoText) {
 
     return {
-        type: SET_YEAR,
-        payload: year
+        type: ADD_TODO,
+        payload: todoText
     }
 
 }

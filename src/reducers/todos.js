@@ -6,7 +6,7 @@ const initialState = {
 }
 
 
-export default function inputField(state = initialState, action) {
+export default function todo(state = initialState, action) {
     switch (action.type) {
         case EDIT_TODO:
             return { ...state, text: action.payload}
