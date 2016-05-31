@@ -1,18 +1,29 @@
 import React, {Component} from 'react'
 
 export default class InputField extends Component {
-    onKeyPress(e){
-        if(e.keyCode !== 13){
+    constructor(props, context) {
+        super(props, context)
+        this.state = {
+            text: this.props.inputValue.value || ''
+        }
+    }
+    handleSubmit(e){
+        const text = e.target.value.trim()
+        if(e.keyCode !== 13 || e.target.value.replace(/\s/g, '') === ''){
             return
         }
-        console.log(this.props)
-        this.props.addTodo(e.target.value)
+        this.setState({text: ''})
+        this.props.addTodo(text)
+    }
+    handleChange(e) {
+        this.setState({ text: e.target.value })
     }
     render(){
         return (
             <input type="text"
-                   onChange={::this.props.changeInputValue}
-                   onKeyDown={::this.onKeyPress}
+                   value={this.state.text}
+                   onChange={::this.handleChange}
+                   onKeyDown={::this.handleSubmit}
             />
         )
     }

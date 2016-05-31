@@ -20,6 +20,7 @@ export default function todo(state = initialState, action) {
                 },
                 ...state
             ]
+            
         default:
             return state;
     }
