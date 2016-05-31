@@ -1,15 +1,25 @@
-import {EDIT_TODO} from '../constants/Todos'
+import {EDIT_TODO, ADD_TODO} from '../constants/Todos'
 
 // Задаем начальное состояние для input поля
-const initialState = {
-    todos: []
-}
-
+const initialState = [
+    {
+        text: 'Use Redux',
+        completed: false,
+        id: 0
+    }
+]
 
 export default function todo(state = initialState, action) {
     switch (action.type) {
-        case EDIT_TODO:
-            return { ...state, text: action.payload}
+        case ADD_TODO:
+            return [
+                {
+                    id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
+                    completed: false,
+                    text: action.payload
+                },
+                ...state
+            ]
         default:
             return state;
     }

@@ -1,6 +1,1 @@
-1. Download starter kit
-2. install dependencies
-3. Create main component App
-  - In that component put Input and Todos components
-4. Create the store and reducers for input and list of todos
-5. Create actions and constants for components
+Нужно сделать добавление TODO для этого можно изменять

@@ -2,17 +2,24 @@ import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import InputField from '../components/InputField'
-import Todos from '../components/Todos'
+import ToDoItem from '../components/ToDoItem'
 import * as InputActions from '../actions/InputActions'
 import * as ToDoActions from '../actions/ToDoActions'
 
 export default class App extends Component {
     render() {
-        console.log(this.props)
+        const {changeInputValue} = this.props.inputActions
+        const {addTodo} = this.props.toDoActions
+        const todos = this.props.listOfTodos &&
+            this.props.listOfTodos.map((todo) =>
+                <ToDoItem key={`uniq-key=${todo.id}`} todo={todo}/>
+            )
         return (
             <div>
-                <InputField />
-                <Todos />
+                <InputField changeInputValue={changeInputValue} addTodo={addTodo}/>
+                <ul>
+                    {todos}
+                </ul>
             </div>
         );
     }
@@ -29,8 +36,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        InputActions: bindActionCreators(InputActions, dispatch),
-        ToDoActions: bindActionCreators(ToDoActions, dispatch)
+        inputActions: bindActionCreators(InputActions, dispatch),
+        toDoActions: bindActionCreators(ToDoActions, dispatch)
     }
 }
 
