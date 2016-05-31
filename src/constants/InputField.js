@@ -1,2 +1,3 @@
 export const ADD_TODO = 'ADD_TODO'
 export const CHANGE_INPUT_VALUE = 'CHANGE_INPUT_VALUE'
+export const CHANGE_STATE_OF_TODO = 'CHANGE_STATE_OF_TODO'

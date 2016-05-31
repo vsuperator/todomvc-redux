@@ -1,4 +1,4 @@
-import {EDIT_TODO, ADD_TODO} from '../constants/Todos'
+import {CHANGE_STATE_OF_TODO, ADD_TODO} from '../constants/Todos'
 
 // Задаем начальное состояние для input поля
 const initialState = [
@@ -20,7 +20,9 @@ export default function todo(state = initialState, action) {
                 },
                 ...state
             ]
-            
+        // Нужно вернуть новое состояние в котором мы меняем нужные нам
+        case CHANGE_STATE_OF_TODO:
+            return [action.payload, ...state]
         default:
             return state;
     }

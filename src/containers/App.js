@@ -9,14 +9,14 @@ import * as ToDoActions from '../actions/ToDoActions'
 export default class App extends Component {
     render() {
         const {changeInputValue, clearValue} = this.props.inputActions
-        const {addTodo} = this.props.toDoActions
+        const {addTodo, changeStateOfTodo} = this.props.toDoActions
         const todos = this.props.listOfTodos &&
             this.props.listOfTodos.map((todo) =>
-                <ToDoItem key={`uniq-key=${todo.id}`} todo={todo}/>
+                <ToDoItem key={`uniq-key=${todo.id}`} todo={todo} changeStateOfTodo={changeStateOfTodo}/>
             )
-        console.log(this.props)
+
         return (
-            <div>
+            <div className="main-container">
                 <InputField inputValue={this.props.inputText} clearValue={clearValue}
                             changeInputValue={changeInputValue} addTodo={addTodo}/>
                 <ul>
