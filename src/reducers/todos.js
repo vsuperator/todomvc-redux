@@ -1,4 +1,4 @@
-import {CHANGE_STATE_OF_TODO, ADD_TODO} from '../constants/Todos'
+import {CHANGE_STATE_OF_TODO, ADD_TODO, DELETE_TODO} from '../constants/Todos'
 
 const initialState = [
     {
@@ -24,7 +24,9 @@ export default function todo(state = initialState, action) {
                 todo.id === action.payload ?
                     Object.assign({}, todo, {completed: !todo.completed }) :
                     todo
-            );
+            )
+        case DELETE_TODO:
+            return state.filter(todo => todo.id !== action.payload);
         default:
             return state;
     }
