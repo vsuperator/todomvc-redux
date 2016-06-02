@@ -8,7 +8,6 @@ export function addTodo(todoText) {
 }
 
 export function changeStateOfTodo(value) {
-    console.log(value)
     return {
         type: CHANGE_STATE_OF_TODO,
         payload: value

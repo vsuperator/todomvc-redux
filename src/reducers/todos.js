@@ -1,6 +1,5 @@
 import {CHANGE_STATE_OF_TODO, ADD_TODO} from '../constants/Todos'
 
-// Задаем начальное состояние для input поля
 const initialState = [
     {
         text: 'Use Redux',
@@ -19,10 +18,13 @@ export default function todo(state = initialState, action) {
                     text: action.payload
                 },
                 ...state
-            ]
-        // Нужно вернуть новое состояние в котором мы меняем нужные нам
+            ];
         case CHANGE_STATE_OF_TODO:
-            return [action.payload, ...state]
+            return state.map(todo =>
+                todo.id === action.payload ?
+                    Object.assign({}, todo, {completed: !todo.completed }) :
+                    todo
+            );
         default:
             return state;
     }

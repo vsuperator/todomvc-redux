@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 
-export default class Todos extends Component {
+export default class ToDoItem extends Component {
     onChange(e){
-        const value = e.target.value === 'on'
-        const todo = this.props.todo
-        this.props.changeStateOfTodo({...todo, completed: value})
+        const todoId = this.props.todo.id;
+        this.props.changeStateOfTodo(todoId)
     }
     render(){
         const todo = this.props.todo
