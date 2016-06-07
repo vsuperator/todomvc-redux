@@ -1,5 +1,5 @@
-import {ADD_TODO, CHANGE_INPUT_VALUE} from '../constants/InputField'
-import {DELETE_TODO, CHANGE_STATE_OF_TODO} from '../constants/Todos'
+import {DELETE_TODO, CHANGE_STATE_OF_TODO,
+    ADD_TODO, CHANGE_INPUT_VALUE} from '../constants/Todos'
 
 export function addTodo(todoText) {
     return {
