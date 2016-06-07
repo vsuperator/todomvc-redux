@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import InputField from '../components/InputField'
+import NewToDo from '../components/NewToDo'
 import ToDoItem from '../components/ToDoItem'
+import Filters from '../components/Filters'
 import * as InputActions from '../actions/InputActions'
 import * as ToDoActions from '../actions/ToDoActions'
 
@@ -19,13 +20,20 @@ export default class App extends Component {
             )
 
         return (
-            <div className="main-container">
-                <InputField inputValue={this.props.inputText} clearValue={clearValue}
-                            changeInputValue={changeInputValue} addTodo={addTodo}/>
-                <ul>
-                    {todos}
-                </ul>
-            </div>
+            <section className="todoapp">
+                <header>
+                    <NewToDo inputValue={this.props.inputText} clearValue={clearValue}
+                                changeInputValue={changeInputValue} addTodo={addTodo}/>
+                </header>
+                <section className="main">
+                    <ul>
+                        {todos}
+                    </ul>
+                </section>
+                <footer className="footer">
+                    <Filters />
+                </footer>
+            </section>
         );
     }
 }

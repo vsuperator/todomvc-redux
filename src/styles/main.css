@@ -1,4 +1,4 @@
-.main-container {
+.todoapp {
     width: 300px;
     margin: 0 auto;
     border: 1px solid black;
@@ -15,4 +15,10 @@
 
 .delete-todo {
     cursor: pointer;
+}
+
+.filters li{
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
 }

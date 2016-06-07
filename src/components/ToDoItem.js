@@ -12,7 +12,7 @@ export default class ToDoItem extends Component {
             isVisibleDeleteBtn: e.type === 'mouseover'
         })
     }
-    onChange(e){
+    onChange(){
         const todoId = this.props.todo.id;
         this.props.changeStateOfTodo(todoId)
     }
