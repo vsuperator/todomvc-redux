@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import NewToDo from '../components/NewToDo'
 import ToDoItem from '../components/ToDoItem'
 import Filters from '../components/Filters'
-import * as InputActions from '../actions/InputActions'
 import * as ToDoActions from '../actions/ToDoActions'
 import * as visibilityAction from '../actions/visibilityAction'
 
@@ -20,8 +19,7 @@ export default class App extends Component {
         return result;
     }
     render() {
-        const {changeInputValue, clearValue} = this.props.inputActions
-        const {addTodo, changeStateOfTodo, deleteToDo} = this.props.toDoActions
+        const {addTodo, changeStateOfTodo, deleteToDo, changeInputValue} = this.props.toDoActions
         const {changeVisibilityState} = this.props.visibilityAction
         const visibleTodos = this.getVisibleTodos(this.props.listOfTodos, this.props.visibilityFilter.visibilityFilter)
         const todos = visibleTodos.map((todo) =>
@@ -34,7 +32,7 @@ export default class App extends Component {
         return (
             <section className="todoapp">
                 <header>
-                    <NewToDo inputValue={this.props.inputText} clearValue={clearValue}
+                    <NewToDo inputValue={this.props.inputText}
                                 changeInputValue={changeInputValue} addTodo={addTodo}/>
                 </header>
                 <section className="main">
@@ -62,7 +60,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        inputActions: bindActionCreators(InputActions, dispatch),
         visibilityAction: bindActionCreators(visibilityAction, dispatch),
         toDoActions: bindActionCreators(ToDoActions, dispatch)
     }

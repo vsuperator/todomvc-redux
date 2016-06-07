@@ -1,4 +1,4 @@
-import {ADD_TODO} from '../constants/InputField'
+import {ADD_TODO, CHANGE_INPUT_VALUE} from '../constants/InputField'
 import {DELETE_TODO, CHANGE_STATE_OF_TODO} from '../constants/Todos'
 
 export function addTodo(todoText) {
@@ -18,6 +18,14 @@ export function changeStateOfTodo(value) {
 export function deleteToDo(value) {
     return {
         type: DELETE_TODO,
+        payload: value
+    }
+}
+
+export function changeInputValue(e){
+    const value = e.target.value
+    return {
+        type: CHANGE_INPUT_VALUE,
         payload: value
     }
 }
