@@ -21,9 +21,9 @@ export default class InputField extends Component {
     render(){
         return (
             <input type="text"
-                   value={this.state.text}
-                   onChange={::this.handleChange}
-                   onKeyDown={::this.handleSubmit}
+                value={this.state.text}
+                onChange={::this.handleChange}
+                onKeyDown={::this.handleSubmit}
             />
         )
     }

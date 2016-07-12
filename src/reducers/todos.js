@@ -1,12 +1,6 @@
-import {CHANGE_STATE_OF_TODO, ADD_TODO, DELETE_TODO} from '../constants/Todos'
+import {CHANGE_STATE_OF_TODO, ADD_TODO, DELETE_TODO, CLEAR_COMPLETED} from '../constants/Todos'
 
-const initialState = [
-    {
-        text: 'Use Redux',
-        completed: false,
-        id: 0
-    }
-]
+const initialState = []
 
 export default function todo(state = initialState, action) {
     switch (action.type) {
@@ -27,6 +21,8 @@ export default function todo(state = initialState, action) {
             )
         case DELETE_TODO:
             return state.filter(todo => todo.id !== action.payload);
+        case CLEAR_COMPLETED:
+            return state.filter(todo => !todo.completed);
         default:
             return state;
     }

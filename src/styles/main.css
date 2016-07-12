@@ -10,7 +10,7 @@
 }
 
 .completed {
-    background: red;
+    text-decoration: line-through;
 }
 
 .delete-todo {
@@ -21,4 +21,9 @@
     cursor: pointer;
     display: inline-block;
     padding: 5px;
+}
+
+.active {
+    border: 1px solid #df4d5e;
+    border-radius: 4px;
 }

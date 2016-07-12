@@ -1,5 +1,5 @@
 import {DELETE_TODO, CHANGE_STATE_OF_TODO,
-    ADD_TODO, CHANGE_INPUT_VALUE} from '../constants/Todos'
+    ADD_TODO, CHANGE_INPUT_VALUE, CLEAR_COMPLETED} from '../constants/Todos'
 
 export function addTodo(todoText) {
     return {
@@ -27,5 +27,12 @@ export function changeInputValue(e){
     return {
         type: CHANGE_INPUT_VALUE,
         payload: value
+    }
+}
+
+export function clearCompleted(){
+    return {
+        type: CLEAR_COMPLETED,
+        payload: null
     }
 }

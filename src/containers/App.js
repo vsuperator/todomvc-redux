@@ -19,9 +19,14 @@ export default class App extends Component {
         return result;
     }
     render() {
-        const {addTodo, changeStateOfTodo, deleteToDo, changeInputValue} = this.props.toDoActions
+        const {addTodo, changeStateOfTodo, deleteToDo, changeInputValue, clearCompleted} = this.props.toDoActions
         const {changeVisibilityState} = this.props.visibilityAction
-        const visibleTodos = this.getVisibleTodos(this.props.listOfTodos, this.props.visibilityFilter.visibilityFilter)
+        const {visibilityFilter} = this.props.visibilityFilter
+        const hasCompleted = this.props.listOfTodos.some(item => item.completed);
+        const remainingItems = this.props.listOfTodos.reduce((prevItem, nextItem) => {
+            return nextItem.completed ? prevItem : prevItem + 1
+        },0)
+        const visibleTodos = this.getVisibleTodos(this.props.listOfTodos, visibilityFilter)
         const todos = visibleTodos.map((todo) =>
                 <ToDoItem key={`uniq-key=${todo.id}`}
                           todo={todo}
@@ -41,7 +46,11 @@ export default class App extends Component {
                     </ul>
                 </section>
                 <footer className="footer">
-                    <Filters setFilter={changeVisibilityState}/>
+                    <Filters setFilter={changeVisibilityState}
+                        clearCompleted={clearCompleted}
+                        remainingItems={remainingItems}
+                        hasCompleted={hasCompleted}
+                        activeFilter={visibilityFilter}/>
                 </footer>
             </section>
         );
